@@ -89,4 +89,13 @@ client.on('messageCreate', async (message) => {
     }
 });
 
+// Simple test command to see if the bot is reading messages
+client.on('messageCreate', (message) => {
+  if (message.author.bot) return;
+
+  // If someone says "ping", the bot will reply "pong!"
+  if (message.content.toLowerCase() === 'ping') {
+    message.reply('Pong! 🏓');
+  }
+});
 client.login(token);
