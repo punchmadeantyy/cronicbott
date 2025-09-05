@@ -8,15 +8,14 @@ client.once('ready', () => {
     console.log(`✅ Bot Online: ${client.user.tag}`);
 });
 
-// Admin Command: !genkey <duration_in_days>
 client.on('messageCreate', async (message) => {
     if (message.author.bot) return;
 
-    // !genkey command - RESTRICT TO YOUR USER ID
+    // !genkey command - ONLY YOU CAN USE THIS
     if (message.content.startsWith('!genkey') && message.author.id === '1398531861411528808') {
         const args = message.content.split(' ');
         if (args.length < 2) {
-            return message.reply('❌ Usage: `!genkey <duration_in_days>`');
+            return message.reply('❌ Usage: `!genkey <number_of_days>`');
         }
 
         const durationDays = parseInt(args[1]);
@@ -40,8 +39,8 @@ client.on('messageCreate', async (message) => {
         }
     }
 
-    // User Command: !redeem <key>
-    if (message.channel.name === 'redeem-key' && message.content.startsWith('!redeem')) {
+    // !redeem command - USERS USE THIS
+    if (message.content.startsWith('!redeem')) {
         const args = message.content.split(' ');
         const licenseKey = args[1];
 
